@@ -5,8 +5,8 @@ class Catalog(models.Model):
     class Meta:
         verbose_name = 'Директория'
         verbose_name_plural = 'Директории'
-    name = models.CharField(max_length=100, help_text='Название директории', default='')
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, help_text='Наддиректория')
+    name = models.CharField(max_length=100, verbose_name='Название директории', default='')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Наддиректория')
 
     def __str__(self):
         if self.parent is not None and self.parent != self:
@@ -21,10 +21,10 @@ class Image(models.Model):
         verbose_name_plural = 'Изображения'
     from django.contrib.auth.models import User
     uploaded = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=100, help_text='Описание фото', blank=True)
-    url = models.URLField(help_text='Ссылка на фото')
+    name = models.CharField(max_length=100, verbose_name='Описание фото', blank=True)
+    url = models.URLField(verbose_name='Ссылка на фото')
     owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False)
-    dir = models.ForeignKey(Catalog, on_delete=models.CASCADE, null=True, blank=False)
+    dir = models.ForeignKey(Catalog, verbose_name='Директория', on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
         if len(self.name) > 0:
@@ -39,10 +39,10 @@ class Video(models.Model):
         verbose_name_plural = 'Видео'
     from django.contrib.auth.models import User
     uploaded = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=100, help_text='Название видео')
-    url = models.URLField(help_text='Ссылка (youtube)')
+    name = models.CharField(max_length=100, verbose_name='Название видео')
+    url = models.URLField(verbose_name='Ссылка (youtube)')
     owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False)
-    dir = models.ForeignKey(Catalog, on_delete=models.CASCADE, null=True, blank=False)
+    dir = models.ForeignKey(Catalog, verbose_name='Директория', on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
         if len(self.name) > 0:
