@@ -4,4 +4,4 @@ from .models import *
 
 admin.site.register(Catalog)
 admin.site.register(Video)
-admin.site.register(Image)
+# admin.site.register(Image)

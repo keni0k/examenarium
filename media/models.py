@@ -21,12 +21,16 @@ class Image(models.Model):
         verbose_name_plural = 'Изображения'
     from django.contrib.auth.models import User
     uploaded = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=100, help_text='Описание фото')
-    url = models.CharField(max_length=200, help_text='Ссылка (youtube)')
+    name = models.CharField(max_length=100, help_text='Описание фото', blank=True)
+    url = models.URLField(help_text='Ссылка на фото')
     owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False)
+    dir = models.ForeignKey(Catalog, on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
-        return "%s" % self.name
+        if len(self.name) > 0:
+            return "%s/%s" % (self.dir, self.name)
+        else:
+            return "%s/%s" % (self.dir, "БЕЗ ИМЕНИ")
 
 
 class Video(models.Model):
@@ -36,10 +40,12 @@ class Video(models.Model):
     from django.contrib.auth.models import User
     uploaded = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, help_text='Название видео')
-    url = models.CharField(max_length=200, help_text='Ссылка (youtube)')
+    url = models.URLField(help_text='Ссылка (youtube)')
     owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False)
-    preview = models.ForeignKey(Image, on_delete=models.PROTECT, null=True, blank=False)
     dir = models.ForeignKey(Catalog, on_delete=models.CASCADE, null=True, blank=False)
 
     def __str__(self):
-        return "%s/%s" % dir, self.name
+        if len(self.name) > 0:
+            return "%s/%s" % (self.dir, self.name)
+        else:
+            return "%s/%s" % (self.dir, "БЕЗ ИМЕНИ")
