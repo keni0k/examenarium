@@ -2,14 +2,8 @@ from django.shortcuts import render
 from .models import *
 
 
-# Create your views here.
-def index(request):
-    # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
-
-
 def videos(request):
-    pass
+    videos = Video.objects.filter(is_active=True)
 
 
 def images(request):

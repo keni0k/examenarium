@@ -1,16 +1,16 @@
-{% extends "base.html" %}
+{% extends "../../main/templates/base.html" %}
 {% load static %}
 
 {% block content %}
   <div class="container">
 
 
-<h2>Page View Report</h2>
+<h2>Videos</h2>
 
 
 <ul>
 
-{% for greeting in greetings %}
+{% for catalog in catalogs %}
     <li>{{ greeting.when }}</li>
 {% endfor %}
 
