@@ -8,3 +8,18 @@ class Task(models.Model):
     text = models.CharField(max_length=500, help_text='Описание задания')
     teacher = models.ForeignKey(User, on_delete=models.PROTECT, null=False, blank=True)
     deadline = models.DateTimeField(help_text='Дедлайн')
+
+
+class Answer(models.Model):
+    CurrentTask = Task
+    Your_answer = models.CharField(max_length=1000, help_text='Ваш ответ')
+
+
+class HWResult(models.Model):
+    from django.contrib.auth.models import User
+    # Объект класса Homework
+    answers = []  # Список из Task-ов
+    time = models.DateTimeField(auto_now_add=True)
+
+
+
