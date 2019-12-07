@@ -5,6 +5,8 @@ from .forms import UserRegistrationForm
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
+    if not request.user.is_staff and request.user.is_authenticated:
+        pass
     return render(request, "index.html")
 
 
