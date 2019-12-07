@@ -2,15 +2,12 @@ from django.urls import path
 from django.contrib import admin
 import main.views
 import media.views
+from django.contrib.auth.views import LoginView, LogoutView
+
+from examenarium import settings
+
 admin.autodiscover()
 
-# To add a new path, first import the app:
-# import blog
-#
-# Then add the new path:
-# path('blog/', blog.urls, name="blog")
-#
-# Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
     path("", main.views.index, name="index"),
@@ -18,6 +15,12 @@ urlpatterns = [
     path("media/videos/", media.views.videos, name="videos"),
     path("media/images/", media.views.images, name="images"),
     path("dirs/", media.views.dirs, name="dirs"),
+
+    path("login/", LoginView.as_view(), name='login'),
+    path("register/", main.views.register, name="register"),
+    path('logout/', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+
+    path("accounts/profile/", main.views.profile, name="profile"),
 
     path("admin/", admin.site.urls),
 ]
