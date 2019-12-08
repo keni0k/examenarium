@@ -34,3 +34,8 @@ class CatalogAdmin(admin.ModelAdmin):
     inlines = [
         VideoInline,
     ]
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    pass
