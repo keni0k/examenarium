@@ -82,6 +82,7 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = ['examenarium.auth.EmailBackend']
 
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 

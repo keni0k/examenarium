@@ -1,12 +1,39 @@
 {% extends 'base.html' %}
-
-{% block title %}Login{% endblock %}
+{% load static %}
 
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+    <section class="auth">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mx-auto auth-content">
+                    <div class="auth-title">Вход</div>
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="inputLogin">Email/Username</label>
+                            <input type="text" class="form-control" id="inputLogin"
+                                   aria-describedby="loginHelp" placeholder="Enter login"
+                                    name="username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPassword">Password</label>
+                            <input type="password" class="form-control" id="inputPassword"
+                                   placeholder="Password" name="password">
+                        </div>
+                        <button type="submit" class="button btn-lg btn-colored d-block w-100">
+                            Войти
+                        </button>
+                        <a href="#">
+                            <img id="vk-auth" src=" {% static 'img/vk-btn-1.svg' %}" class="avatar-3" width="100%"
+                                 data-toggle="tooltip" title="Войти через Вконтакте">
+                        </a>
+                        <a href="{% url "register" %}" class="auth-link register-link" data-test="registry_button">Регистрация</a>
+                        <div class="w-100"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

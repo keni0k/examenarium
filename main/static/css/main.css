@@ -1,0 +1,35 @@
+.auth-title {
+    font-style: normal;
+    line-height: 34px;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.auth .register-link {
+    margin-top: 40px;
+    display: block;
+}
+
+.button.btn-colored {
+    border: 0;
+    color: white;
+    background-color: blueviolet;
+}
+
+.auth .button {
+    height: 48px;
+    margin-bottom: 12px;
+    margin-top: 34px;
+}
+
+.auth-link {
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 14px;
+    color: #252525;
+    text-align: center;
+    transition: all .2s;
+}
