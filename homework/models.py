@@ -62,7 +62,7 @@ class Answer(models.Model):
         verbose_name = 'Ответ'
         verbose_name_plural = 'Ответы'
     current_task = models.ForeignKey(Task, on_delete=models.PROTECT, verbose_name='Задание', null=False, blank=False)
-    your_case = models.TextField(max_length=1000, verbose_name='Ваш ответ', null=True, blank=False)  # Стоит изменить на TextField
+    your_case = models.TextField(max_length=1000, verbose_name='Ваш ответ', null=True, blank=False)
     result = models.ForeignKey(HWResult, on_delete=models.PROTECT, null=False, blank=False)
 
     def __str__(self):

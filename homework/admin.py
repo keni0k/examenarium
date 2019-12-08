@@ -45,3 +45,9 @@ class HWResultAdmin(admin.ModelAdmin):
     inlines = [
         AnswerInline,
     ]
+
+    # def get_queryset(self, request):
+    #     qs = super(HWResultAdmin, self).get_queryset(request)
+    #     if request.user.is_superuser:
+    #         return qs
+    #     return qs.filter(Answer.objects.get(result=self)[0].current_task.current_work.teacher)
