@@ -23,8 +23,8 @@ class CourseSubscribe(models.Model):
         verbose_name = 'Подписка на курс'
         verbose_name_plural = 'Подписки на курс'
 
-    subscribed_until = models.DateField(auto_now_add=True)
-    student = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
+    subscribed_until = models.DateField(auto_now_add=False, verbose_name='Подписка активна до')
+    student = models.ForeignKey(User, verbose_name='Ученик', on_delete=models.CASCADE, null=True, blank=False)
     course = models.ForeignKey(Course, verbose_name='Курс', on_delete=models.CASCADE, null=True, blank=False)
 
     def is_active(self):
@@ -32,6 +32,5 @@ class CourseSubscribe(models.Model):
 
     def __str__(self):
         if self.is_active():
-            return "Подписка %s на курс '%s' активна" % (self.student, self.course)
-        return "Подписка %s на курс '%s' истекла" % (self.student, self.course)
-
+            return 'Подписка "%s" на курс "%s" активна' % (self.student, self.course)
+        return 'Подписка "%s" на курс "%s" истекла' % (self.student, self.course)
