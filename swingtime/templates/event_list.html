@@ -7,7 +7,8 @@
                 <div class="col-12 col-md-6 col-lg-4 mx-auto calendar-content">
                     <h3>All Events</h3>
                     <ul>{% for e in events %}
-                        <li><a href="{{ e.get_absolute_url }}">{{ e }}</a></li>
+                        <li>{{ e }}</li>
+{#                        <li><a href="{{ e.get_absolute_url }}">{{ e }}</a></li>#}
                     {% endfor %}</ul>
                 </div>
             </div>

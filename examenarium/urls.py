@@ -1,9 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib import admin
-from django.contrib import auth
 import main.views
 import media.views
-import swingtime.views
 from django.contrib.auth.views import LoginView, LogoutView
 
 from examenarium import settings
@@ -23,7 +21,7 @@ urlpatterns = [
 
     path("accounts/profile/", main.views.profile, name="profile"),
 
-    path("calendar/", swingtime.views.event_listing, name="calendar"),
+    path("time/", include('swingtime.urls')),
 
     path("admin/", admin.site.urls),
 ]
