@@ -10,7 +10,8 @@ class Course(models.Model):
         verbose_name_plural = 'Курсы'
 
     title = models.CharField(max_length=100, verbose_name='Название курса', default='')
-    teacher = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False, verbose_name='Преподаватель')
+    teacher = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=False, verbose_name='Преподаватель', related_name='teacher')
+    curators = models.ManyToManyField(User, verbose_name='Кураторы', related_name='curators')
 
     def __str__(self):
         return "%s" % self.title

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .forms import *
+from django.db.models import Q
 from .models import *
 
 
@@ -18,7 +18,7 @@ class CourseAdmin(admin.ModelAdmin):
         qs = super(CourseAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
-        return qs.filter(teacher=request.user)
+        return qs.filter(Q(teacher=request.user) | Q(curators__in=[request.user]))
 
     def get_fields(self, request, obj=None):
         fields = list(super(CourseAdmin, self).get_fields(request, obj))
