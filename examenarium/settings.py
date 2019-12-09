@@ -28,6 +28,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
+    "widget_tweaks",
     "material.admin",  # material
     "material.admin.default",  # material
     #  "django.contrib.admin",
