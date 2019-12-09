@@ -85,6 +85,10 @@ DATABASES = {
     }
 }
 
+# User substitution
+# https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#auth-custom-user
+
+AUTH_USER_MODEL = 'main.User'
 AUTHENTICATION_BACKENDS = ['examenarium.auth.EmailBackend']
 
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

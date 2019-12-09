@@ -1,9 +1,7 @@
 from datetime import date
 
-from django.contrib.auth.models import User
 from django.db import models
-
-from examenarium.settings import TIME_ZONE
+from main.models import User
 
 
 class Course(models.Model):

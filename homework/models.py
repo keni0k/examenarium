@@ -2,7 +2,7 @@ from django.db import models
 
 from course.models import Course
 from media.models import Image
-from django.contrib.auth.models import User
+from main.models import User
 
 
 class HWType(models.Model):
