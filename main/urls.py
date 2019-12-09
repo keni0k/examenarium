@@ -1,6 +1,6 @@
+from django.conf.urls import url
 from django.contrib.auth.views import LoginView, LogoutView
-from django.urls import path
-
+from django.urls import path, include
 from examenarium import settings
 from main import views
 
