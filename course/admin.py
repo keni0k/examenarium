@@ -30,7 +30,7 @@ class MGAdmin(admin.ModelAdmin):
     inlines = [
         MasterGroupSubscribeInline,
     ]
-    icon_name = 'school'
+    icon_name = 'group'
 
     def get_queryset(self, request):
         qs = super(MGAdmin, self).get_queryset(request)
