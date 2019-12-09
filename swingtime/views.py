@@ -17,9 +17,7 @@ if swingtime_settings.CALENDAR_FIRST_WEEKDAY is not None:
     calendar.setfirstweekday(swingtime_settings.CALENDAR_FIRST_WEEKDAY)
 
 
-def event_listing(
-    request
-):
+def event_listing(request):
     '''
     View all ``events``.
 
