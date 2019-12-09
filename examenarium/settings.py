@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     "main",
     "homework",
     "media",
-    "course"
+    "course",
+    "swingtime"
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
