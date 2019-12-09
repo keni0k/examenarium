@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from homework.models import HW
+
 
 def db(request):
-    return render(request, "db.html", {})
+    homeworks = HW.objects.all()
+    return render(request, "db.html", {'homeworks': homeworks})

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 {% load static %}
 
 <head>
@@ -23,21 +23,25 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'homework' %}">Домашняя работа</a>
             </li>
-            {% if not user.is_staff and user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Курсы
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for course in user.get_courses %}
-                            <a class="dropdown-item" href="#">{{ course.title }}</a>
-                        {% endfor %}
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+            {% if user.is_authenticated %}
+                {% if not user.is_staff or user.is_superuser %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Курсы
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for course in user.get_subscribed_courses %}
+                                <a class="dropdown-item" href="#">{{ course.title }}</a>
+                            {% endfor %}
+                            <div class="dropdown-divider"></div>
+                            {% for course in user.get_not_subscribed_courses %}
+                                <a class="dropdown-item" href="#">{{ course.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endif %}
             {% endif %}
             {% if user.is_authenticated %}
                 <li class="nav-item">

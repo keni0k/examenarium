@@ -60,7 +60,7 @@ ROOT_URLCONF = "examenarium.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -127,3 +127,4 @@ STATIC_URL = "/static/"
 django_heroku.settings(locals())
 
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/account/profile'

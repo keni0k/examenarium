@@ -51,6 +51,10 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    def get_courses(self):
+    def get_subscribed_courses(self):
         from course.models import CourseSubscribe
         return map(get_course, CourseSubscribe.objects.filter(student=self))
+
+    def get_not_subscribed_courses(self):
+        from course.models import CourseSubscribe
+        return map(get_course, CourseSubscribe.objects.exclude(student=self))
