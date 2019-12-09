@@ -1,3 +1,4 @@
+default_app_config = 'examenarium.apps.SwingTimeConfig'
 VERSION = (1, 1, 0)
 
 
