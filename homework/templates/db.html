@@ -2,20 +2,22 @@
 {% load static %}
 
 {% block content %}
-  <div class="container">
+    <section class="hw">
+        <div class="container">
+            <div class="row">
 
+                <h2>Домашняя работа</h2>
 
-<h2>Homeworks</h2>
+                <ul>
 
+                    {% for hw in homeworks %}
+                        <li>{{ hw }}</li>
+                    {% endfor %}
 
-<ul>
+                </ul>
 
-{% for hw in homeworks %}
-    <li>{{ hw.teacher }}</li>
-{% endfor %}
-
-</ul>
-
-</div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

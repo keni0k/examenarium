@@ -37,8 +37,8 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-def get_course(course_subscribe):
-    return course_subscribe.course
+def get_course(mg_subsribe):
+    return mg_subsribe.master_group.course.title  # TODO: It doesn't work
 
 
 class User(AbstractUser):
@@ -51,10 +51,10 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    def get_subscribed_courses(self):
-        from course.models import CourseSubscribe
-        return map(get_course, CourseSubscribe.objects.filter(student=self))
+    def get_subscribed_course(self):
+        from course.models import MasterGroupSubscribe
+        return map(get_course, MasterGroupSubscribe.objects.filter(student=self))
 
-    def get_not_subscribed_courses(self):
-        from course.models import CourseSubscribe
-        return map(get_course, CourseSubscribe.objects.exclude(student=self))
+    def get_not_subscribed_course(self):
+        from course.models import MasterGroupSubscribe
+        return map(get_course, MasterGroupSubscribe.objects.exclude(student=self))

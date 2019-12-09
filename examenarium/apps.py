@@ -24,4 +24,5 @@ class MediaConfig(AppConfig):
 class SwingTimeConfig(AppConfig):
     name = 'swingtime'
     verbose_name = 'Календарь'
+    icon_name = 'date_range'
 

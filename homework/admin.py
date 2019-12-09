@@ -1,7 +1,10 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(HWType)
+
+@admin.register(HWType)
+class HWTypeAdmin(admin.ModelAdmin):
+    icon_name = 'turned_in'
 
 
 class TaskInline(admin.TabularInline):
@@ -14,6 +17,7 @@ class HWAdmin(admin.ModelAdmin):
     inlines = [
         TaskInline,
     ]
+    icon_name = 'home'
 
     def get_fields(self, request, obj=None):
         fields = list(super(HWAdmin, self).get_fields(request, obj))
@@ -45,6 +49,7 @@ class HWResultAdmin(admin.ModelAdmin):
     inlines = [
         AnswerInline,
     ]
+    icon_name = 'event_available'
 
     def get_fields(self, request, obj=None):
         fields = list(super(HWResultAdmin, self).get_fields(request, obj))

@@ -36,12 +36,12 @@
                             Курсы
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for course in user.get_subscribed_courses %}
-                                <a class="dropdown-item" href="#">{{ course.title }}</a>
+                            {% for course_title in user.get_subscribed_course %}
+                                <a class="dropdown-item" href="#">{{ course_title }}</a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for course in user.get_not_subscribed_courses %}
-                                <a class="dropdown-item" href="#">{{ course.title }}</a>
+                            {% for course_title in user.get_not_subscribed_course %}
+                                <a class="dropdown-item" href="#">{{ course_title }}</a>
                             {% endfor %}
                         </div>
                     </li>

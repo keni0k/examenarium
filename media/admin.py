@@ -7,6 +7,7 @@ class VideoAdmin(admin.ModelAdmin):
     readonly_fields = ["owner"]
     list_display = ('__str__', 'owner')
     list_filter = ('dir', 'owner')
+    icon_name = 'video_library'
 
     def get_queryset(self, request):
         qs = super(VideoAdmin, self).get_queryset(request)
@@ -32,16 +33,23 @@ class VideoInline(admin.TabularInline):
     readonly_fields = ["owner"]
 
 
+class ImageInline(admin.TabularInline):
+    model = Image
+    readonly_fields = ["owner"]
+
+
 @admin.register(Catalog)
 class CatalogAdmin(admin.ModelAdmin):
     inlines = [
-        VideoInline,
+        VideoInline, ImageInline
     ]
+    icon_name = 'folder'
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     readonly_fields = ["owner"]
+    icon_name = 'photo_library'
 
     def get_queryset(self, request):
         qs = super(ImageAdmin, self).get_queryset(request)

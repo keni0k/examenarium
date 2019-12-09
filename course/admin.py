@@ -3,35 +3,37 @@ from django.db.models import Q
 from .models import *
 
 
-class CourseSubscribeInline(admin.TabularInline):
-    model = CourseSubscribe
+class MasterGroupInline(admin.TabularInline):
+    model = MasterGroup
 
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     inlines = [
-        CourseSubscribeInline,
+        MasterGroupInline,
     ]
+    icon_name = 'school'
 
     def get_queryset(self, request):
         qs = super(CourseAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
-        return qs.filter(Q(teacher=request.user) | Q(curators__in=[request.user]))
+        return qs.filter(Q(teacher=request.user))
 
-    def get_readonly_fields(self, request, obj=None):
-        if obj and not request.user.is_superuser:
-            return self.readonly_fields + ('teacher', 'curators')
-        return self.readonly_fields
 
-    def get_fields(self, request, obj=None):
-        fields = list(super(CourseAdmin, self).get_fields(request, obj))
-        exclude_set = set()
-        if obj is None:
-            exclude_set.add('teacher')
-        return [f for f in fields if f not in exclude_set]
+class MasterGroupSubscribeInline(admin.TabularInline):
+    model = MasterGroupSubscribe
 
-    def save_model(self, request, obj, form, change):
-        if obj.pk is None:
-            obj.teacher = request.user
-        super().save_model(request, obj, form, change)
+
+@admin.register(MasterGroup)
+class MGAdmin(admin.ModelAdmin):
+    inlines = [
+        MasterGroupSubscribeInline,
+    ]
+    icon_name = 'school'
+
+    def get_queryset(self, request):
+        qs = super(MGAdmin, self).get_queryset(request)
+        if request.user.is_superuser or request.user.groups.filter(name='Преподаватель').exists():
+            return qs
+        return qs.filter(Q(curators__in=[request.user]))
