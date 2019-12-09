@@ -9,7 +9,6 @@ class CourseSubscribeInline(admin.TabularInline):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    readonly_fields = ['teacher']
     inlines = [
         CourseSubscribeInline,
     ]
@@ -19,6 +18,11 @@ class CourseAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(Q(teacher=request.user) | Q(curators__in=[request.user]))
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj and not request.user.is_superuser:
+            return self.readonly_fields + ('teacher', 'curators')
+        return self.readonly_fields
 
     def get_fields(self, request, obj=None):
         fields = list(super(CourseAdmin, self).get_fields(request, obj))
