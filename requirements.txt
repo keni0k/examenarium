@@ -4,4 +4,4 @@ django
 gunicorn
 django-heroku
 django-material-admin
-social_core
+social-auth-core
