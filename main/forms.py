@@ -3,8 +3,8 @@ from django import forms
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -18,10 +18,7 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserAuthForm(forms.ModelForm):
-    # username = forms.CharField(label='Email', widget=forms.TextInput)
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    # username = forms.CharField(label='Email', widget=forms.EmailInput())
-    # password = forms.CharField(label='Пароль', widget=forms.PasswordInput())
 
     class Meta:
         model = User
