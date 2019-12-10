@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Profile</h2>
-    <h3>There is your profile, {{ user.get_username }}</h3>
+    <section class="profile">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mx-auto standard-content">
+                    <div class="standard-title">Profile</div>
+                    <div class="alert alert-primary" role="alert">
+                        There is your profile, {{ user.first_name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

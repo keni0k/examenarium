@@ -47,6 +47,8 @@
                     </li>
                 {% endif %}
             {% endif %}
+        </ul>
+        <ul class="navbar-nav">
             {% if user.is_authenticated %}
                 {% if request.path == "/account/profile/" %}
                         <li class="nav-item active">

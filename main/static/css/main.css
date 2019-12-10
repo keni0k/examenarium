@@ -1,4 +1,4 @@
-.auth-title {
+.standard-title {
     font-style: normal;
     line-height: 34px;
     font-weight: bold;
@@ -32,4 +32,8 @@
     color: #252525;
     text-align: center;
     transition: all .2s;
+}
+
+.standard-content {
+    margin-top: 2.5rem;
 }
